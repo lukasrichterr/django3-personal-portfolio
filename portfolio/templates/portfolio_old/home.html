@@ -1,0 +1,25 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+<h1>Lukas Portfolio</h1>
+<a href="{% url 'blog:all_blogs' %}">Blog</a>
+{% load static %}
+
+<a href="{% static 'portfolio/vertriebspartner Antrag.pdf' %}">Vertriebspartner Antrag</a>
+
+<img src="{% static 'portfolio/Profilbild.jpg' %}">
+
+
+{% for p in projects %}
+
+<h3>{{ p.title }}</h3>
+<p>{{ p.description }}</p>
+<img src="{{ p.image.url }}">
+{% if p.url %}
+<br><a href="{{ p.url }}">Link</a>
+{% endif %}
+{% endfor %}
+
+
+{% endblock %}
